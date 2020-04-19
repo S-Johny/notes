@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/* stylelint-disable */
 html,
 body {
   height: 100%;
@@ -15,7 +16,6 @@ body {
   box-sizing: border-box;
 }
 
-/* stylelint-disable-next-line selector-max-type */
 input,
 button {
   border: none;
@@ -26,6 +26,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
