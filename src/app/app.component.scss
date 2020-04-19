@@ -13,3 +13,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.form-item:not(:last-child) {
+  margin-bottom: 15px;
+}

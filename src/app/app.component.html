@@ -25,7 +25,7 @@
 </div>
 
 <form class="new-note" (ngSubmit)="addNote()" [formGroup]="noteForm">
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="form-item">
     <mat-label>Title</mat-label>
     <input
       matInput
@@ -34,7 +34,7 @@
     />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="form-item">
     <mat-label>Description</mat-label>
     <textarea
       matInput
@@ -42,4 +42,12 @@
       formControlName="description"
     ></textarea>
   </mat-form-field>
+  <button
+    class="form-item"
+    [disabled]="noteForm.invalid"
+    color="primary"
+    mat-raised-button
+  >
+    {{ 'add' | translate }}
+  </button>
 </form>

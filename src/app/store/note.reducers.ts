@@ -40,6 +40,10 @@ const reducer = createReducer(
       loading: false,
     }),
   ),
+  on(createNoteSuccessAction, (state, { note }) => ({
+    ...state,
+    tableContent: [...(state.tableContent || []), note],
+  })),
   on(
     getAllNotesFailureAction,
     getNoteFailureAction,
