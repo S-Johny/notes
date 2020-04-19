@@ -1,6 +1,9 @@
 {
   "headline": "Here are your precious notes",
+  "addForm":  "Add note",
+  "editForm":  "Edit Note",
   "noteTitle": "Whatever",
   "noteDescription": "Just do it!!!",
-  "add": "Add"
+  "add": "Add",
+  "edit": "Edit"
 }

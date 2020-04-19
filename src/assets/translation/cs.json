@@ -1,6 +1,9 @@
 {
   "headline": "Tady mas svoje poznamky heh...",
+  "addForm":  "Nova poznamka",
+  "editForm":  "Uprav poznamku",
   "noteTitle": "Dej sem co chces",
   "noteDescription": "Kdyz myslis...",
-  "add": "Toz pridej"
+  "add": "Toz pridej",
+  "edit": "Toz uprav"
 }

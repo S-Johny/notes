@@ -22,6 +22,7 @@ import { NoteEffects } from './store/note.effects';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/translation/', '.json');
@@ -39,6 +40,7 @@ const reducers: ActionReducerMap<AppState> = {
     MatButtonToggleModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

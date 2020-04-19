@@ -7,6 +7,7 @@ import {
   getAllNotesAction,
   getNoteAction,
   createNoteAction,
+  updateNoteAction,
 } from './store/note.actions';
 import { $tableNotes, $note } from './store/note.selectors';
 import { Observable } from 'rxjs';
@@ -25,7 +26,15 @@ export class AppComponent {
     .pipe(pluck('lang'));
   readonly notesTableData$ = this.store.pipe(select($tableNotes));
 
+  editing: number | null = null;
+
   noteForm: FormGroup = this.fb.group({
+    title: ['', Validators.required],
+    description: '',
+  });
+
+  editNoteForm: FormGroup = this.fb.group({
+    id: [null, Validators.required],
     title: ['', Validators.required],
     description: '',
   });
@@ -60,5 +69,28 @@ export class AppComponent {
     };
     this.store.dispatch(createNoteAction({ note }));
     this.noteForm.reset();
+  }
+
+  clearEdit(): void {
+    this.editNoteForm.reset();
+    this.editing = null;
+  }
+
+  changeEdit(note: NoteModel): void {
+    this.editing = note.id;
+    this.editNoteForm.setValue({
+      title: note.title,
+      description: note.description,
+      id: note.id,
+    });
+  }
+
+  editNote(): void {
+    if (this.editNoteForm.invalid) {
+      return;
+    }
+    this.store.dispatch(
+      updateNoteAction({ note: this.editNoteForm.getRawValue() }),
+    );
   }
 }

@@ -12,42 +12,83 @@
 </mat-toolbar>
 
 <div *ngIf="notesTableData$ | async as data" class="table-content">
-  <mat-expansion-panel (opened)="getDetail(item.id)" *ngFor="let item of data">
+  <mat-expansion-panel
+    (closed)="clearEdit()"
+    (opened)="getDetail(item.id)"
+    *ngFor="let item of data"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ item.title }}
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <ng-container *ngIf="noteDetail(item.id) | async as detail">
-      <p>{{ detail.description }}</p>
-    </ng-container>
+    <div class="note-content" *ngIf="noteDetail(item.id) | async as detail">
+      <span>{{ detail.description }}</span>
+      <mat-icon class="edit" (click)="changeEdit(detail)">edit</mat-icon>
+    </div>
   </mat-expansion-panel>
 </div>
+<div class="note-form-container">
+  <form class="note-form" (ngSubmit)="addNote()" [formGroup]="noteForm">
+    <h3>{{ 'addForm' | translate }}</h3>
+    <mat-form-field class="form-item">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        [placeholder]="'noteTitle' | translate"
+        formControlName="title"
+      />
+    </mat-form-field>
 
-<form class="new-note" (ngSubmit)="addNote()" [formGroup]="noteForm">
-  <mat-form-field class="form-item">
-    <mat-label>Title</mat-label>
-    <input
-      matInput
-      [placeholder]="'noteTitle' | translate"
-      formControlName="title"
-    />
-  </mat-form-field>
+    <mat-form-field class="form-item">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [placeholder]="'noteDescription' | translate"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <button
+      class="form-item"
+      [disabled]="noteForm.invalid"
+      color="primary"
+      mat-raised-button
+    >
+      {{ 'add' | translate }}
+    </button>
+  </form>
 
-  <mat-form-field class="form-item">
-    <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      [placeholder]="'noteDescription' | translate"
-      formControlName="description"
-    ></textarea>
-  </mat-form-field>
-  <button
-    class="form-item"
-    [disabled]="noteForm.invalid"
-    color="primary"
-    mat-raised-button
+  <form
+    *ngIf="editing != null"
+    class="note-form"
+    (ngSubmit)="editNote()"
+    [formGroup]="editNoteForm"
   >
-    {{ 'add' | translate }}
-  </button>
-</form>
+    <h3>{{ 'editForm' | translate }}</h3>
+    <mat-form-field class="form-item">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        [placeholder]="'noteTitle' | translate"
+        formControlName="title"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="form-item">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [placeholder]="'noteDescription' | translate"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <button
+      class="form-item"
+      [disabled]="editNoteForm.invalid"
+      color="primary"
+      mat-raised-button
+    >
+      {{ 'edit' | translate }}
+    </button>
+  </form>
+</div>

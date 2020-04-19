@@ -7,7 +7,7 @@
   padding: 42px;
 }
 
-.new-note {
+.note-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,4 +16,20 @@
 
 .form-item:not(:last-child) {
   margin-bottom: 15px;
+}
+
+.note-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.note-form-container {
+  display: flex;
+  justify-content: space-around;
 }
