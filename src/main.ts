@@ -8,5 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// tslint:disable
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err: any) => console.error(err));
