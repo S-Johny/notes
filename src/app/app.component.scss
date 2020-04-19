@@ -1,0 +1,15 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-content {
+  padding: 42px;
+}
+
+.new-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
