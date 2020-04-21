@@ -49,7 +49,7 @@ describe('Note Effect', () => {
         provideMockActions(() => actions$),
         provideMockStore({
           initialState: {
-            note: {
+            notes: {
               tableContent: null,
               entities: {},
               errors: [],
@@ -74,7 +74,7 @@ describe('Note Effect', () => {
     expect(effects.getAllNotes$).toBeObservable(expected);
   });
 
-  test.skip('get one note', () => {
+  test('get one note', () => {
     store.overrideSelector($note(0), null);
     actions$ = hot('-r', {
       r: getNoteAction({ id: 0 }),
