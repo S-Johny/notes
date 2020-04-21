@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/translation/', '.json');
@@ -41,6 +42,7 @@ const reducers: ActionReducerMap<AppState> = {
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
